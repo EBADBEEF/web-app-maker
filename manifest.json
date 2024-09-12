@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Popup URL Extension",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "host_permissions": [
+    "*://popup.example.com/*"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{6939caba-6748-4abd-beaa-50128d29778a}"
+    }
+  }
+}
