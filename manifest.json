@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Site Popup",
-  "description": "Open up a web page in a popup (a window without any navigation bar, bookmark bar, menu). For example, navigate to https://popup.example.com/google.com to open google.com in a new popup window.",
-  "version": "2024.9.12.0",
+  "name": "Web App Popup",
+  "description": "Open sites in a popup window (no browser widgets) by using a special fake URL: popup.example.com/[site] for when you want that Progressive Web App (PWA) or Site Specific Browser (SSB) experience.",
+  "version": "2024.9.12.1",
   "permissions": [
     "tabs",
     "webRequest",
@@ -16,7 +16,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "{6939caba-6748-4abd-beaa-50128d29778a}"
+      "id": "{4ceee88d-ecd0-48f2-9f17-cc725d5e0886}"
     }
   }
 }
