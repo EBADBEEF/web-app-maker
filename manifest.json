@@ -1,6 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Site Popup",
+  "description": "Open up a web page in a popup (a window without any navigation bar, bookmark bar, menu). For example, navigate to https://popup.example.com/google.com to open google.com in a new popup window.",
   "version": "2024.9.12.0",
   "permissions": [
     "tabs",
