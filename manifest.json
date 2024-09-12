@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Popup URL Extension",
-  "version": "1.0",
+  "name": "Site Popup",
+  "version": "2024.9.12.0",
   "permissions": [
     "tabs",
     "webRequest",

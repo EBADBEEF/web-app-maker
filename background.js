@@ -1,15 +1,23 @@
-// Listen for navigation to the special domain "popup.example.com"
-chrome.webRequest.onBeforeRequest.addListener(
-  (details) => {
-    let src = URL.parse(details.url);
-    let dst = src.protocol + "//" + src.pathname.substring(1) + src.search;
-    chrome.windows.create({
-      type: 'popup',
-      url: dst,
-    });
-    browser.tabs.remove(details.tabId);
-    return { cancel: true };
-  },
-  { urls: ["<all_urls>"] },
-  ["blocking"]
-);
+const callback = function(req) {
+  let src = URL.parse(req.url);
+  let dst = src.protocol + "//" + src.pathname.substring(1) + src.search;
+  browser.tabs.remove(req.tabId);
+  chrome.windows.create({
+    type: 'popup',
+    url: dst,
+  });
+  return ({
+    cancel: true
+  });
+};
+
+const filter = {
+  urls: ["<all_urls>"],
+  types: ["main_frame"],
+};
+
+const extraInfoSpec = [
+  "blocking",
+];
+
+chrome.webRequest.onBeforeRequest.addListener(callback, filter, extraInfoSpec);
