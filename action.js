@@ -1,7 +1,7 @@
-const urlPrefix = "/app/";
+const urlPrefix = browser.runtime.getURL("/app/");
 
-browser.tabs.query({active: true, currentWindow: true}).then((tabs) => {
-  document.getElementById("open").onclick = function(click) {
+browser.tabs.query({active: true, currentWindow: true}).then(function(tabs) {
+  document.getElementById("popout").onclick = function(click) {
     browser.windows.create({
       type: 'popup',
       tabId: tabs[0].id,
@@ -9,11 +9,11 @@ browser.tabs.query({active: true, currentWindow: true}).then((tabs) => {
     return false;
   };
 
-  let make = document.getElementById("make");
+  let make = document.getElementById("linkify");
   make.href = urlPrefix + encodeURIComponent(tabs[0].url);
   make.onclick = function(click) {
     navigator.clipboard.writeText(click.target.href);
-    document.getElementById("check").innerText = "☑";
+    make.children[0].innerText = "☑";
     return false;
   };
 });
