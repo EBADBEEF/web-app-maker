@@ -1,23 +1,25 @@
-const callback = function(req) {
-  let src = URL.parse(req.url);
-  let dst = src.protocol + "//" + src.pathname.substring(1) + src.search;
-  browser.tabs.remove(req.tabId);
-  chrome.windows.create({
+/* listen on moz-extension://<uuid>/popup/<url> */
+const path = "/app/"
+
+const callback = function(details) {
+  console.log(details)
+  let src = URL.parse(details.url);
+  let dst = decodeURIComponent(src.pathname.substring(path.length));
+  if (!URL.parse(dst))
+    dst = "https://" + dst
+
+  browser.tabs.remove(details.tabId);
+  //browser.tabs.update(details.tabId, { url: dst });
+
+  browser.windows.create({
     type: 'popup',
     url: dst,
-  });
-  return ({
-    cancel: true
+    //tabId: details.tabId,
   });
 };
 
 const filter = {
-  urls: ["<all_urls>"],
-  types: ["main_frame"],
+  url: [ { urlPrefix: browser.runtime.getURL(path), } ],
 };
 
-const extraInfoSpec = [
-  "blocking",
-];
-
-chrome.webRequest.onBeforeRequest.addListener(callback, filter, extraInfoSpec);
+browser.webNavigation.onBeforeNavigate.addListener(callback, filter)

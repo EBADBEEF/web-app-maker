@@ -1,22 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "Web App Popup",
-  "description": "Open sites in a popup window (no browser widgets) by using a special fake URL: popup.example.com/[site] for when you want that Progressive Web App (PWA) or Site Specific Browser (SSB) experience.",
-  "version": "2024.9.12.1",
+  "name": "Web App Maker",
+  "description": "Open sites in a window without any browser decorations. For when you want the Progressive Web App (PWA) or Site Specific Browser (SSB) experience.",
+  "version": "2024.9.13.0",
   "permissions": [
     "tabs",
-    "webRequest",
-    "webRequestBlocking"
-  ],
-  "host_permissions": [
-    "*://popup.example.com/*"
+    "webNavigation"
   ],
   "background": {
     "scripts": ["background.js"]
   },
+  "action": {
+    "default_popup": "action.html"
+  },
   "browser_specific_settings": {
     "gecko": {
-      "id": "{4ceee88d-ecd0-48f2-9f17-cc725d5e0886}"
+      "id": "{8f951055-7bfe-4b20-a9cb-7921ea76e29d}"
     }
   }
 }
