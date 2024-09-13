@@ -1,16 +1,19 @@
-const path = "/app/"
-const anchor = document.createElement("a");
-const copyText = "copy this link "
-anchor.onclick = (click) => {
-  navigator.clipboard.writeText(click.target.href);
-  if (!anchor.value) {
-    anchor.text = copyText + "☑";
-    anchor.value = 1;
-  }
-  return false;
-};
+const urlPrefix = "/app/";
+
 browser.tabs.query({active: true, currentWindow: true}).then((tabs) => {
-  anchor.href = path + encodeURIComponent(tabs[0].url);
-  anchor.text = copyText + "☐"
-  document.body.appendChild(anchor);
+  document.getElementById("open").onclick = function(click) {
+    browser.windows.create({
+      type: 'popup',
+      tabId: tabs[0].id,
+    });
+    return false;
+  };
+
+  let make = document.getElementById("make");
+  make.href = urlPrefix + encodeURIComponent(tabs[0].url);
+  make.onclick = function(click) {
+    navigator.clipboard.writeText(click.target.href);
+    document.getElementById("check").innerText = "☑";
+    return false;
+  };
 });

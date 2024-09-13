@@ -1,10 +1,7 @@
-const urlPrefix = browser.runtime.getURL("/link/");
+const urlPrefix = browser.runtime.getURL("/app/");
 
 const callback = function(details) {
   let dst = decodeURIComponent(details.url.substring(urlPrefix.length));
-  if (!URL.parse(dst))
-    dst = "https://" + dst
-
   browser.tabs.remove(details.tabId);
   browser.windows.create({
     type: 'popup',
