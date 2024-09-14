@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Web App Maker",
   "description": "Open sites in a window without any browser decorations. For when you want the Progressive Web App (PWA) or Site Specific Browser (SSB) experience.",
-  "version": "2024.9.13.0",
+  "version": "2024.9.13.1",
   "permissions": [
     "clipboardWrite",
     "tabs",
