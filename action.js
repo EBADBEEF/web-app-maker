@@ -1,4 +1,5 @@
 const urlPrefix = browser.runtime.getURL("/app/");
+//const urlPrefix = "http://webappmaker.test/";
 
 browser.tabs.query({active: true, currentWindow: true}).then(function(tabs) {
   document.getElementById("popout").onclick = function(click) {
